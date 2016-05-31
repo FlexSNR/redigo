@@ -388,8 +388,8 @@ func ScanStruct(src []interface{}, dest interface{}) error {
 		if fs == nil {
 			continue
 		}
-		_ = convertAssignValue(d.FieldByIndex(fs.index), s)
-		/*if err := convertAssignValue(d.FieldByIndex(fs.index), s); err != nil {
+		 _= convertAssignValue(d.FieldByIndex(fs.index), s)
+/*		if err := convertAssignValue(d.FieldByIndex(fs.index), s); err != nil {
 			return fmt.Errorf("redigo.ScanStruct: cannot assign field %s: %v", fs.name, err)
 		}*/
 	}
