@@ -227,7 +227,6 @@ func convertAssign(d interface{}, s interface{}) (err error) {
 // To enable easy use of Scan in a loop, Scan returns the slice of src
 // following the copied values.
 func Scan(src []interface{}, dest ...interface{}) ([]interface{}, error) {
-	fmt.Println("Scan")
 	if len(src) < len(dest) {
 		return nil, errors.New("redigo.Scan: array short")
 	}
