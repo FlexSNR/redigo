@@ -72,7 +72,8 @@ func convertAssignBulkString(d reflect.Value, s []byte) (err error) {
 		d.SetString(string(s))
 	case reflect.Slice:
 		if d.Type().Elem().Kind() != reflect.Uint8 {
-			err = cannotConvert(d, s)
+			//slice of non uint8 is not supported
+			fmt.Println(cannotConvert(d, s))
 		} else {
 			d.SetBytes(s)
 		}
@@ -226,6 +227,7 @@ func convertAssign(d interface{}, s interface{}) (err error) {
 // To enable easy use of Scan in a loop, Scan returns the slice of src
 // following the copied values.
 func Scan(src []interface{}, dest ...interface{}) ([]interface{}, error) {
+	fmt.Println("Scan")
 	if len(src) < len(dest) {
 		return nil, errors.New("redigo.Scan: array short")
 	}
@@ -388,10 +390,9 @@ func ScanStruct(src []interface{}, dest interface{}) error {
 		if fs == nil {
 			continue
 		}
-		 _= convertAssignValue(d.FieldByIndex(fs.index), s)
-/*		if err := convertAssignValue(d.FieldByIndex(fs.index), s); err != nil {
+		if err := convertAssignValue(d.FieldByIndex(fs.index), s); err != nil {
 			return fmt.Errorf("redigo.ScanStruct: cannot assign field %s: %v", fs.name, err)
-		}*/
+		}
 	}
 	return nil
 }
