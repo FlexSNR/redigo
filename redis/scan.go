@@ -73,7 +73,7 @@ func convertAssignBulkString(d reflect.Value, s []byte) (err error) {
 	case reflect.Slice:
 		if d.Type().Elem().Kind() != reflect.Uint8 {
 			//slice of non uint8 is not supported
-			fmt.Println(cannotConvert(d, s))
+			//fmt.Println(cannotConvert(d, s))
 		} else {
 			d.SetBytes(s)
 		}
