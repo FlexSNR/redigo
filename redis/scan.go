@@ -78,7 +78,8 @@ func convertAssignBulkString(d reflect.Value, s []byte) (err error) {
 			d.SetBytes(s)
 		}
 	default:
-		err = cannotConvert(d, s)
+		//fmt.Println("returning cannotConvert() from convertAssignBulkString()")
+		//err = cannotConvert(d, s)
 	}
 	return
 }
@@ -105,7 +106,8 @@ func convertAssignInt(d reflect.Value, s int64) (err error) {
 	case reflect.Bool:
 		d.SetBool(s != 0)
 	default:
-		err = cannotConvert(d, s)
+		//fmt.Println("returning cannotConvert() from convertAssignInt()")
+		//err = cannotConvert(d, s)
 	}
 	return
 }
@@ -117,7 +119,8 @@ func convertAssignValue(d reflect.Value, s interface{}) (err error) {
 	case int64:
 		err = convertAssignInt(d, s)
 	default:
-		err = cannotConvert(d, s)
+		//fmt.Println("returning cannotConvert() from convertAssignValue()")
+		//err = cannotConvert(d, s)
 	}
 	return err
 }
